@@ -20,10 +20,10 @@ public class Stage {
     public String responseInput;
 
     public Stage(){}
-    public Stage(Process process, String prompt, String responseType, String responseInput){
+    public Stage(Process process, String prompt, String responseType){
         this.process = process;
         this.prompt = prompt;
         this.responseType = responseType;
-        this.responseInput = responseInput;
+        this.responseInput = "";
     }
 }
