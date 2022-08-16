@@ -4,4 +4,5 @@ public class ProcessRequest {
     Long id;
     String title;
     String directions;
+    Boolean isCompleted;
 }

@@ -1,0 +1,28 @@
+<header>
+	<div class="logo">
+		<span>&#9782;</span>
+		<h1> Process Dashboard</h1>
+	</div>
+	<nav>
+		<ul>
+			<li>
+				<a routerLink="new" routerLinkActive="active">
+					<span class="nav-icon">&#10011;</span>
+					<label>New Process</label>
+				</a>
+			</li>
+			<li>
+				<a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+					<span class="nav-icon">&#9776;</span>
+					<label>View All</label>
+				</a>
+			</li>
+			<li>
+				<a routerLink="completed" routerLinkActive="active">
+					<span class="nav-icon">&#10004;</span>
+					<label>Completed</label>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</header>

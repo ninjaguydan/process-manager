@@ -23,6 +23,7 @@ public class ProcessService {
         Process process = emptyCheck(repository.findById(requestBody.id));
         process.title = requestBody.title;
         process.directions = requestBody.directions;
+        process.isCompleted = requestBody.isCompleted;
         repository.save(process);
     }
     public void DELETE_PROCESS(Long id){

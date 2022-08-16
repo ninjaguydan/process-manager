@@ -1,0 +1,54 @@
+.pg-container {
+    padding: 3rem;
+    height: 100%;
+    overflow: auto;
+}
+h2 {
+    margin-bottom: 2rem;
+}
+form {
+    background-color: ghostwhite;
+    padding: 1rem;
+    border: 1px solid lightgray;
+    border-radius: .25rem;
+    max-width: 35.9375rem;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.add-stage {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+    justify-content: center;
+    padding: .5rem;
+    border: unset;
+    border-radius: .25rem;
+    background-color: var(--dark-ghostwhite);
+    transition: all .2s;
+}
+.add-stage:hover {
+    background-color: #d2d2da;
+}
+span.nav-icon {
+    font-size: 1rem;
+    color: white;
+    background-color: gray;
+    width: .75rem;
+    height: .75rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .75rem;
+    border-radius: 50%;
+    top: 0;
+}
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+}

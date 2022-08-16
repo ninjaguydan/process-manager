@@ -17,10 +17,13 @@ public class Process {
     public String title;
     @JsonProperty
     public String directions;
+    @JsonProperty
+    public Boolean isCompleted;
 
     public Process(){}
     public Process(String title, String directions){
         this.title = title;
         this.directions = directions;
+        this.isCompleted = false;
     }
 }
