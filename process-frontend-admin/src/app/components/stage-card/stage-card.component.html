@@ -2,7 +2,7 @@
 	<span class="order">{{INDEX+1}}</span>
 	<div class="content">
 		<p>{{STAGE.prompt}}</p>
-		<ul *ngIf="STAGE.type==='Multiple'">
+		<ul *ngIf="STAGE.responseType==='Multiple'">
 			<li *ngFor="let item of STAGE.options">{{item.content}}</li>
 		</ul>
 	</div>

@@ -1,9 +1,11 @@
 <div class="pg-container">
 	<h2>Create New Process</h2>
+	<strong *ngIf="error">Title cannot be empty</strong>
+	<strong *ngIf="stageError">Must add at least 1 stage</strong>
 	<form>
 		<div class="form-group">
 			<label for="title">Title</label>
-			<input name="title" id="title" class="form-control" [(ngModel)]="title">
+			<input name="title" id="title" class="form-control {{error && 'error'}}" [(ngModel)]="title">
 		</div>
 		<div class="form-group">
 			<label for="directions">Directions</label>
@@ -20,17 +22,17 @@
 		</app-stage-card>
 
 		<app-stage-form
-			*ngFor="let stage of stageFormList; let i=index"
-			[INDEX]="i"
-			[STAGE]="stage"
-			(ON_REMOVE)="removeStage($event)"
-			(ON_SAVE)="addTempStage($event)"
+				*ngFor="let stage of stageFormList; let i=index"
+				[INDEX]="i"
+				[STAGE]="stage"
+				(ON_REMOVE)="removeStage($event)"
+				(ON_SAVE)="addTempStage($event)"
 		>
 		</app-stage-form>
-		<button class="add-stage" (click)="addStage()"><span class="nav-icon">&#10011;</span> Add Stage</button>
+		<button class="add-stage {{stageError && 'error'}}" (click)="addStage()"><span class="nav-icon">&#10011;</span> Add Stage</button>
 		<hr>
 		<div class="btn-container">
-			<button class="btn btn-primary">Save</button>
+			<button class="btn btn-primary" (click)="onProcessSave()">Save</button>
 			<button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
 		</div>
 	</form>

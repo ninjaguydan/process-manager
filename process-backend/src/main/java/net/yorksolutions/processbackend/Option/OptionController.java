@@ -17,9 +17,9 @@ public class OptionController {
         return service.GET_OPTIONS_BY_STAGE(stageId);
     }
     @PostMapping
-    public void createOption(@RequestBody OptionRequest requestBody){
-        service.CREATE_OPTION(requestBody.content, requestBody.stageId);
-    }
+//    public void createOption(@RequestBody OptionRequest requestBody){
+//        service.CREATE_OPTION(requestBody.content, requestBody.stageId);
+//    }
     @PutMapping
     public void editOption(@RequestBody OptionRequest requestBody){
         service.EDIT_OPTION(requestBody.id, requestBody.content);

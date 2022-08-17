@@ -12,6 +12,8 @@ export class StageFormComponent implements OnInit {
 	@Input() STAGE!:IStage
 	@Output() ON_REMOVE = new EventEmitter
 	@Output() ON_SAVE = new EventEmitter
+	error:boolean = false
+	optionError:boolean = false
 
 	constructor() {
 
@@ -19,6 +21,7 @@ export class StageFormComponent implements OnInit {
 	ngOnInit(): void {
 	}
 	onSave():void{
+		if ( this.errorCheck() ) {return}
 		this.ON_SAVE.emit(this.STAGE)
 		this.onCancel()
 	}
@@ -26,7 +29,7 @@ export class StageFormComponent implements OnInit {
 		this.ON_REMOVE.emit(this.INDEX)
 	}
 	setType(value: string):void {
-		this.STAGE.type = value
+		this.STAGE.responseType = value
 	}
 	addOption():void{
 		if ( this.STAGE.options.length < 4 ) {
@@ -35,6 +38,19 @@ export class StageFormComponent implements OnInit {
 				{id:0, content:''}
 			]
 		}
+	}
+	errorCheck():boolean{
+		if ( this.STAGE.prompt === "" ) {
+			this.error = true
+			return true
+		} else if ( this.STAGE.responseType === "Multiple"
+			&& (this.STAGE.options[0].content === "" && this.STAGE.options[1].content === "")) {
+			this.error = false
+			this.optionError = true
+			return true
+		}
+		this.optionError = false
+		return false
 	}
 
 }

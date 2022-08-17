@@ -49,7 +49,9 @@ span.nav-icon {
     background-color: var(--green);
     border-color: var(--green);
 }
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
     background-color: var(--dark-green);
     border-color: var(--dark-green);
 }

@@ -5,21 +5,21 @@
 </div>
 <div class="form-group">
 	<label>Prompt {{INDEX+1}}</label>
-	<input class="form-control" type="text" [(ngModel)]="STAGE.prompt">
+	<input class="form-control {{error && 'error'}}" type="text" [(ngModel)]="STAGE.prompt">
 </div>
 
 <div class="type-select">
 	<p>Response Type:</p>
-	<label><input type="radio" name="type{{INDEX}}" value="Text" [ngModel]="STAGE.type" (ngModelChange)="setType($event)"> Text</label>
-	<label><input type="radio" name="type{{INDEX}}" value="Multiple" [ngModel]="STAGE.type" (ngModelChange)="setType($event)"> Multiple Choice</label>
-	<label><input type="radio" name="type{{INDEX}}" value="True/False" [ngModel]="STAGE.type" (ngModelChange)="setType($event)"> True/False</label>
+	<label><input type="radio" name="type{{INDEX}}" value="Text" [ngModel]="STAGE.responseType" (ngModelChange)="setType($event)"> Text</label>
+	<label><input type="radio" name="type{{INDEX}}" value="Multiple" [ngModel]="STAGE.responseType" (ngModelChange)="setType($event)"> Multiple Choice</label>
+	<label><input type="radio" name="type{{INDEX}}" value="True/False" [ngModel]="STAGE.responseType" (ngModelChange)="setType($event)"> True/False</label>
 </div>
 
-<br *ngIf="STAGE.type ==='Multiple'; then showMultiple">
+<br *ngIf="STAGE.responseType ==='Multiple'; then showMultiple">
 <ng-template #showMultiple>
 	<div *ngFor="let option of STAGE.options; let i = index">
 		<label>Option {{i+1}}</label>
-		<input class="form-control" [(ngModel)]="option.content">
+		<input class="form-control {{optionError && 'error'}}" [(ngModel)]="option.content">
 	</div>
 	<button class="add"
 	        *ngIf="STAGE.options.length < 4"

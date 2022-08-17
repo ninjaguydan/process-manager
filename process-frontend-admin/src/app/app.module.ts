@@ -8,8 +8,9 @@ import {ProcessListComponent} from './components/process-list/process-list.compo
 import {ProcessFinishedComponent} from './components/process-finished/process-finished.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
-import { StageFormComponent } from './components/stage-form/stage-form.component';
-import { StageCardComponent } from './components/stage-card/stage-card.component';
+import {StageFormComponent} from './components/stage-form/stage-form.component';
+import {StageCardComponent} from './components/stage-card/stage-card.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const routes: Routes = [
 	{path: "", component: ProcessListComponent},
@@ -24,14 +25,15 @@ const routes: Routes = [
 		ProcessFormComponent,
 		ProcessListComponent,
 		ProcessFinishedComponent,
-  StageFormComponent,
-  StageCardComponent
+		StageFormComponent,
+		StageCardComponent
 	],
 	imports: [
 		RouterModule.forRoot(routes),
 		BrowserModule,
 		NgbModule,
-		FormsModule
+		FormsModule,
+		HttpClientModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

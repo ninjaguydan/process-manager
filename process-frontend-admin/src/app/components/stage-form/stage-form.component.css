@@ -39,3 +39,7 @@ span.nav-icon {
     height: .75rem;
     padding: .75rem;
 }
+.error {
+    border: 1px solid red;
+    box-shadow: 0 0 5px orangered;
+}

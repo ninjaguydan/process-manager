@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static net.yorksolutions.processbackend.Helpers.emptyCheck;
+import static net.yorksolutions.processbackend.Helpers.nullCheck;
 
 @Service
 public class OptionService {
@@ -21,8 +22,8 @@ public class OptionService {
         Stage stage = emptyCheck(stageRepository.findById(stageId));
         return repository.getAllByStage(stage);
     }
-    public void CREATE_OPTION(String content, Long stageId){
-        Stage stage = emptyCheck(stageRepository.findById(stageId));
+    public void CREATE_OPTION(String content, Stage stage){
+        nullCheck(content);
         var option = new Option(content, stage);
         repository.save(option);
     }

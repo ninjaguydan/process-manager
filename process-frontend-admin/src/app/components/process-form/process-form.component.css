@@ -46,3 +46,12 @@ span.nav-icon {
     justify-content: flex-end;
     gap: .5rem;
 }
+.error {
+    border: 1px solid red;
+    box-shadow: 0 0 5px orangered;
+}
+strong {
+    color: red;
+    margin-bottom: 1rem;
+    display: block;
+}

@@ -19,7 +19,7 @@ public class Helpers {
         }
     }
     public static <T> T nullCheck(T value){
-        if (value == null) {
+        if (value == null || value == "") {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
             return value;
