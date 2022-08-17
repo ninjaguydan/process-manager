@@ -6,7 +6,7 @@
 			<li *ngFor="let item of STAGE.options">{{item.content}}</li>
 		</ul>
 	</div>
-	<div class="options">
+	<div class="options" *ngIf="EDIT_VIEW">
 		<button (click)="onEdit()">&#9998;</button> |
 		<button (click)="onDelete()">&#10005;</button>
 	</div>

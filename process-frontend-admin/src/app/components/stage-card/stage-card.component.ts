@@ -9,6 +9,7 @@ import {IStage} from "../../interfaces/IStage";
 export class StageCardComponent implements OnInit {
   @Input() STAGE!:IStage
   @Input() INDEX!:number
+  @Input() EDIT_VIEW:boolean = true
   @Output() ON_STAGE_DELETE = new EventEmitter
   @Output() ON_STAGE_EDIT = new EventEmitter
 

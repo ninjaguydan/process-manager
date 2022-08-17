@@ -1,1 +1,8 @@
-<p>process-list works!</p>
+<div class="pg-container">
+	<h2>All Processes</h2>
+	<app-process *ngFor="let process of processList"
+			[PROCESS]="process"
+	        (ON_CHANGE)="setProcessList()"
+	>
+	</app-process>
+</div>

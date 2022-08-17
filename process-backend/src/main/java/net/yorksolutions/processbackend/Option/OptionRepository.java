@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OptionRepository extends CrudRepository<Option, Long> {
-    Iterable<Option> getAllByStage(Stage stage);
+//    Iterable<Option> getAllByStage(Stage stage);
 }

@@ -3,7 +3,7 @@
 :root {
     --green: #00b21c;
     --dark-green: #06961c;
-    --dark-ghostwhite: #e2e2e9;
+    --dark-ghostwhite: #ededf8;
 }
 * {
     padding: 0;
@@ -23,6 +23,7 @@ a {
 }
 ul {
     padding: 0;
+    margin: 0;
     list-style: none;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -32,6 +33,9 @@ h1, h2, h3, h4, h5, h6 {
 p, a, li {
     font-size: 1rem;
     margin: 0;
+}
+h2 {
+    margin-bottom: 2rem;
 }
 button {
     cursor: pointer;

@@ -1,7 +1,12 @@
 package net.yorksolutions.processbackend.Stage;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.yorksolutions.processbackend.Option.Option;
 import net.yorksolutions.processbackend.Process.Process;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Stage {
@@ -10,18 +15,17 @@ public class Stage {
     @JsonProperty
     public Long id;
     @JsonProperty
-    @ManyToOne
-    public Process process;
-    @JsonProperty
     public String prompt;
     @JsonProperty
     public String responseType;
     @JsonProperty
     public String responseInput;
+    @JsonProperty
+    @OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
+    public List<Option> options = new ArrayList<>();
 
     public Stage(){}
-    public Stage(Process process, String prompt, String responseType){
-        this.process = process;
+    public Stage(String prompt, String responseType){
         this.prompt = prompt;
         this.responseType = responseType;
         this.responseInput = "";

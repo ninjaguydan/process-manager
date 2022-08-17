@@ -12,20 +12,18 @@ import static net.yorksolutions.processbackend.Helpers.nullCheck;
 public class OptionService {
 
     OptionRepository repository;
-    StageRepository stageRepository;
     @Autowired
-    public OptionService(OptionRepository optionRepository, StageRepository stageRepository){
+    public OptionService(OptionRepository optionRepository){
         this.repository = optionRepository;
-        this.stageRepository = stageRepository;
     }
-    public Iterable<Option> GET_OPTIONS_BY_STAGE(Long stageId){
-        Stage stage = emptyCheck(stageRepository.findById(stageId));
-        return repository.getAllByStage(stage);
-    }
-    public void CREATE_OPTION(String content, Stage stage){
+//    public Iterable<Option> GET_OPTIONS_BY_STAGE(Long stageId){
+//        Stage stage = emptyCheck(stageRepository.findById(stageId));
+//        return repository.getAllByStage(stage);
+//    }
+    public Option CREATE_OPTION(String content){
         nullCheck(content);
-        var option = new Option(content, stage);
-        repository.save(option);
+        var option = new Option(content);
+        return repository.save(option);
     }
     public void EDIT_OPTION(Long optionId, String newContent){
         var option = emptyCheck(repository.findById(optionId));

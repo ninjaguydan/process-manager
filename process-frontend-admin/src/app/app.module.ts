@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import {StageFormComponent} from './components/stage-form/stage-form.component';
 import {StageCardComponent} from './components/stage-card/stage-card.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ProcessComponent } from './components/process/process.component';
 
 const routes: Routes = [
 	{path: "", component: ProcessListComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
 		ProcessListComponent,
 		ProcessFinishedComponent,
 		StageFormComponent,
-		StageCardComponent
+		StageCardComponent,
+  ProcessComponent
 	],
 	imports: [
 		RouterModule.forRoot(routes),

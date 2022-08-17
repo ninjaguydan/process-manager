@@ -14,13 +14,11 @@ public class Option {
     public Long id;
     @JsonProperty
     public String content;
-    @JsonProperty
     @ManyToOne
     public Stage stage;
 
     public Option(){}
-    public Option(String content, Stage stage){
+    public Option(String content){
         this.content = content;
-        this.stage = stage;
     }
 }
