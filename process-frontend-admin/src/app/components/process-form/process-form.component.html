@@ -16,8 +16,8 @@
 				*ngFor="let stage of stageList; let i=index"
 				[STAGE]="stage"
 				[INDEX]="i"
-				(ON_STAGE_DELETE)="removeTempStage($event)"
-				(ON_STAGE_EDIT)="editTempStage($event)"
+				(ON_STAGE_DELETE)="removeStage($event)"
+				(ON_STAGE_EDIT)="editStage($event)"
 		>
 		</app-stage-card>
 
@@ -25,11 +25,11 @@
 				*ngFor="let stage of stageFormList; let i=index"
 				[INDEX]="i"
 				[STAGE]="stage"
-				(ON_REMOVE)="removeStage($event)"
-				(ON_SAVE)="addTempStage($event)"
+				(ON_REMOVE)="removeStageForm($event)"
+				(ON_SAVE)="addStage($event)"
 		>
 		</app-stage-form>
-		<button class="add-stage {{stageError && 'error'}}" (click)="addStage()"><span class="nav-icon">&#10011;</span> Add Stage</button>
+		<button class="add-stage {{stageError && 'error'}}" (click)="addStageForm()"><span class="nav-icon">&#10011;</span> Add Stage</button>
 		<hr>
 		<div class="btn-container">
 			<button class="btn btn-primary" (click)="onProcessSave()">Save</button>

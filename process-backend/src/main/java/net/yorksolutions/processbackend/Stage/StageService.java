@@ -16,18 +16,19 @@ import static net.yorksolutions.processbackend.Helpers.nullCheck;
 public class StageService {
 
     StageRepository repository;
+    ProcessRepository processRepository;
     OptionService optionService;
 
     @Autowired
-    public StageService(StageRepository stageRepository, OptionService optionService) {
+    public StageService(StageRepository stageRepository, OptionService optionService, ProcessRepository processRepository) {
         this.repository = stageRepository;
         this.optionService = optionService;
-
+        this.processRepository = processRepository;
     }
 
-    public Iterable<Stage> GET_ALL_STAGES() {
-        return repository.findAll();
-    }
+//    public Iterable<Stage> GET_ALL_STAGES() {
+//        return repository.findAll();
+//    }
 
     public Stage CREATE_STAGE(StageRequest stageRequest) {
         nullCheck(stageRequest.prompt);
@@ -42,15 +43,33 @@ public class StageService {
         return repository.save(stage);
     }
 
-    public void EDIT_STAGE(StageRequest requestBody) {
-        Stage stage = emptyCheck(repository.findById(requestBody.id));
-        stage.prompt = requestBody.prompt;
-        stage.responseType = requestBody.responseType;
-        stage.responseInput = requestBody.responseInput;
-        repository.save(stage);
+    public void EDIT_STAGE(StageRequest requestBody, Process process) {
+        if ( repository.existsById(requestBody.id) ) {
+            Stage stage = repository.findById(requestBody.id).get();
+            stage.prompt = requestBody.prompt;
+            stage.responseType = requestBody.responseType;
+            stage.responseInput = requestBody.responseInput;
+            if (requestBody.responseType.equals("Multiple")) {
+                for (OptionRequest option : requestBody.options) {
+                    optionService.EDIT_OPTION(option.id, option.content);
+                }
+            }
+            repository.save(stage);
+        } else {
+            Stage newStage = this.CREATE_STAGE(requestBody);
+            process.stages.add(newStage);
+            processRepository.save(process);
+        }
     }
 
-    public void DELETE_STAGE(Long id) {
-        repository.deleteById(id);
+    public void DELETE_STAGE(Long id, Long processId) {
+        if (!repository.existsById(id)) {
+            return;
+        }
+        Stage stage = emptyCheck(repository.findById(id));
+        Process process = emptyCheck(processRepository.findById(processId));
+        process.stages.remove(stage);
+        processRepository.save(process);
+        repository.delete(stage);
     }
 }

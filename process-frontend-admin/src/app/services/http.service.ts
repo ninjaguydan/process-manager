@@ -20,6 +20,9 @@ export class HttpService {
 		return this.httpClient.post('http://localhost:8080/stages',{
 		})
 	}
+	DELETE_STAGE(stageId:number, processId:number){
+		return this.httpClient.delete(`http://localhost:8080/stages/${stageId}/${processId}`)
+	}
 	//-------------------- PROCESSES --------------------
 	GET_PROCESSES():Observable<IProcess[]>{
 		return this.httpClient.get<IProcess[]>('http://localhost:8080/processes')
@@ -29,5 +32,8 @@ export class HttpService {
 	}
 	DELETE_PROCESS(processId:number){
 		return this.httpClient.delete(`http://localhost:8080/processes/${processId}`)
+	}
+	EDIT_PROCESS(process:IProcess) {
+		return this.httpClient.put('http://localhost:8080/processes', {...process})
 	}
 }

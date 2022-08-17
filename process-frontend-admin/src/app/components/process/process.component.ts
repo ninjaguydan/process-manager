@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IProcess} from "../../interfaces/IProcess";
-import {IStage} from "../../interfaces/IStage";
 import {HttpService} from "../../services/http.service";
 import {first} from "rxjs";
+import {DataService} from "../../services/data.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: 'app-process',
@@ -14,7 +15,7 @@ export class ProcessComponent implements OnInit {
 	@Input() PROCESS!: IProcess
 	@Output() ON_CHANGE = new EventEmitter
 
-	constructor(private httpService: HttpService) {
+	constructor(private httpService: HttpService, private dataService:DataService, private router:Router) {
 	}
 
 	ngOnInit(): void {
@@ -32,6 +33,8 @@ export class ProcessComponent implements OnInit {
 	}
 
 	editProcess() {
+		this.dataService.SET_PROCESS_EDIT(this.PROCESS)
+		this.router.navigate(["new"]).then()
 
 	}
 

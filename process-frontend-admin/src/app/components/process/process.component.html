@@ -1,14 +1,14 @@
-<div class="stage-card">
+<button class="stage-card" (click)="expandInfo()">
 	<header>
 		<div class="options">
 			<button (click)="deleteProcess()">&#10005;</button>
 			<button (click)="editProcess()">&#9998;</button>
 		</div>
 		<div class="content">
-			<h3>{{PROCESS.title}}</h3>
+			<h3>{{PROCESS.title}} <small>{{PROCESS.stages.length}} Stage(s)</small></h3>
 			<p>{{PROCESS.directions}}</p>
 		</div>
-		<button (click)="expandInfo()" class="chevron {{!truncated && 'rotate' }}">&#10148;</button>
+		<span class="chevron {{!truncated && 'rotate' }}">&#10148;</span>
 	</header>
 	<div *ngIf="!truncated" class="stage-container">
 		<app-stage-card
@@ -19,4 +19,4 @@
 		>
 		</app-stage-card>
 	</div>
-</div>
+</button>

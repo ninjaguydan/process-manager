@@ -12,20 +12,21 @@ public class StageController {
     public StageController(StageService service){
         this.service = service;
     }
-    @GetMapping
-    public Iterable<Stage> getAllStages(){
-        return service.GET_ALL_STAGES();
-    }
-    @PostMapping
+
+//    @GetMapping
+//    public Iterable<Stage> getAllStages(){
+//        return service.GET_ALL_STAGES();
+//    }
+//    @PostMapping
 //    public void createStage(@RequestBody StageRequest requestBody){
 //        service.CREATE_STAGE();
 //    }
-    @PutMapping
-    public void editStage(@RequestBody StageRequest requestBody){
-        service.EDIT_STAGE(requestBody);
-    }
-    @DeleteMapping("/{id}")
-    public void deleteStage(@PathVariable Long id){
-        service.DELETE_STAGE(id);
+//    @PutMapping
+//    public void editStage(@RequestBody StageRequest requestBody){
+//        service.EDIT_STAGE(requestBody);
+//    }
+    @DeleteMapping("/{id}/{processId}")
+    public void deleteStage(@PathVariable Long id, @PathVariable Long processId){
+        service.DELETE_STAGE(id, processId);
     }
 }

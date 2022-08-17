@@ -41,6 +41,9 @@ public class ProcessService {
         process.title = requestBody.title;
         process.directions = requestBody.directions;
         process.isCompleted = requestBody.isCompleted;
+        for ( StageRequest stage : requestBody.stages ) {
+            stageService.EDIT_STAGE(stage, process);
+        }
         repository.save(process);
     }
 

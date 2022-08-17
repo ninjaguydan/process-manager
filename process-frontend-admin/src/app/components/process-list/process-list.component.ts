@@ -20,11 +20,8 @@ export class ProcessListComponent implements OnInit {
 	}
 	setProcessList(){
 		this.httpService.GET_PROCESSES().pipe(first()).subscribe({
-			next: value => {
-				this.processList = value;
-				console.log(value)
-			},
-			error: err => {console.error(err)}
+			next: value => this.processList = value,
+			error: err => console.error(err)
 		})
 	}
 

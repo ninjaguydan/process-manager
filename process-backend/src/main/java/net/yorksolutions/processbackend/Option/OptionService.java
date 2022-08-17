@@ -16,10 +16,7 @@ public class OptionService {
     public OptionService(OptionRepository optionRepository){
         this.repository = optionRepository;
     }
-//    public Iterable<Option> GET_OPTIONS_BY_STAGE(Long stageId){
-//        Stage stage = emptyCheck(stageRepository.findById(stageId));
-//        return repository.getAllByStage(stage);
-//    }
+
     public Option CREATE_OPTION(String content){
         nullCheck(content);
         var option = new Option(content);
