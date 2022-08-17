@@ -1,6 +1,6 @@
 <hr>
 <div class="options">
-	<button>Save</button> |
+	<button (click)="onSave()">Save</button> |
 	<button (click)="onCancel()">Cancel</button>
 </div>
 <div class="form-group">
@@ -11,27 +11,19 @@
 <div class="type-select">
 	<p>Response Type:</p>
 	<label><input type="radio" name="type{{INDEX}}" value="Text" [ngModel]="STAGE.type" (ngModelChange)="setType($event)"> Text</label>
-	<label><input type="radio" name="type{{INDEX}}" value="Checkbox" [ngModel]="STAGE.type" (ngModelChange)="setType($event)"> Multiple</label>
+	<label><input type="radio" name="type{{INDEX}}" value="Multiple" [ngModel]="STAGE.type" (ngModelChange)="setType($event)"> Multiple Choice</label>
 	<label><input type="radio" name="type{{INDEX}}" value="True/False" [ngModel]="STAGE.type" (ngModelChange)="setType($event)"> True/False</label>
 </div>
 
-
-<br *ngIf="STAGE.type ==='Checkbox'; then showMultiple">
+<br *ngIf="STAGE.type ==='Multiple'; then showMultiple">
 <ng-template #showMultiple>
-	<div>
-		<label>Option 1</label>
-		<input class="form-control" [(ngModel)]="STAGE.options.first">
+	<div *ngFor="let option of STAGE.options; let i = index">
+		<label>Option {{i+1}}</label>
+		<input class="form-control" [(ngModel)]="option.content">
 	</div>
-	<div>
-		<label>Option 2</label>
-		<input class="form-control" [(ngModel)]="STAGE.options.second">
-	</div>
-	<div>
-		<label>Option 3</label>
-		<input class="form-control" [(ngModel)]="STAGE.options.third">
-	</div>
-	<div>
-		<label>Option 4</label>
-		<input class="form-control" [(ngModel)]="STAGE.options.fourth">
-	</div>
+	<button class="add"
+	        *ngIf="STAGE.options.length < 4"
+	        (click)="addOption()">
+		<span class="nav-icon">&#10011;</span>
+	</button>
 </ng-template>

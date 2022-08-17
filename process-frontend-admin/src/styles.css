@@ -35,6 +35,14 @@ p, a, li {
 }
 button {
     cursor: pointer;
+    background-color: unset;
+    border: unset;
+}
+span.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 /*---------- Bootstrap Overwrite ---------- */
 .btn-primary {

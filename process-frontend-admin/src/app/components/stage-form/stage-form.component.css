@@ -27,3 +27,15 @@
     text-decoration: underline;
     color: black;
 }
+button.add {
+    display: block;
+    margin: 1rem auto;
+}
+span.nav-icon {
+    font-size: 1rem;
+    color: white;
+    background-color: var(--green);
+    width: .75rem;
+    height: .75rem;
+    padding: .75rem;
+}

@@ -9,6 +9,7 @@ import {ProcessFinishedComponent} from './components/process-finished/process-fi
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
 import { StageFormComponent } from './components/stage-form/stage-form.component';
+import { StageCardComponent } from './components/stage-card/stage-card.component';
 
 const routes: Routes = [
 	{path: "", component: ProcessListComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
 		ProcessFormComponent,
 		ProcessListComponent,
 		ProcessFinishedComponent,
-  StageFormComponent
+  StageFormComponent,
+  StageCardComponent
 	],
 	imports: [
 		RouterModule.forRoot(routes),

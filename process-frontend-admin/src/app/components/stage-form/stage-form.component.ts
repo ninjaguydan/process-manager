@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {IStage} from "../../interfaces/IStage";
 
 @Component({
 	selector: 'app-stage-form',
@@ -8,7 +9,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class StageFormComponent implements OnInit {
 
 	@Input() INDEX!: number
-	@Input() STAGE!:any
+	@Input() STAGE!:IStage
 	@Output() ON_REMOVE = new EventEmitter
 	@Output() ON_SAVE = new EventEmitter
 
@@ -17,12 +18,23 @@ export class StageFormComponent implements OnInit {
 	}
 	ngOnInit(): void {
 	}
-	setType(value: string) {
+	onSave():void{
+		this.ON_SAVE.emit(this.STAGE)
+		this.onCancel()
+	}
+	onCancel():void{
+		this.ON_REMOVE.emit(this.INDEX)
+	}
+	setType(value: string):void {
 		this.STAGE.type = value
 	}
-	onCancel(){
-		// this.responseObject = this.setEmptyResponse()
-		this.ON_REMOVE.emit(this.INDEX)
+	addOption():void{
+		if ( this.STAGE.options.length < 4 ) {
+			this.STAGE.options = [
+				...this.STAGE.options,
+				{id:0, content:''}
+			]
+		}
 	}
 
 }

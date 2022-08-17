@@ -1,0 +1,13 @@
+<div class="stage-card">
+	<span class="order">{{INDEX+1}}</span>
+	<div class="content">
+		<p>{{STAGE.prompt}}</p>
+		<ul *ngIf="STAGE.type==='Multiple'">
+			<li *ngFor="let item of STAGE.options">{{item.content}}</li>
+		</ul>
+	</div>
+	<div class="options">
+		<button (click)="onEdit()">&#9998;</button> |
+		<button (click)="onDelete()">&#10005;</button>
+	</div>
+</div>

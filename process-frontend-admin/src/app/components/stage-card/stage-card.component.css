@@ -1,0 +1,46 @@
+.stage-card {
+    width: 100%;
+    background-color: var(--dark-ghostwhite);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+    color: gray;
+    margin-bottom: 0.25rem;
+}
+.stage-card .order, .content p {
+    font-weight: bold;
+}
+.stage-card .content {
+    flex-grow: 1;
+}
+.content {
+    width: calc(100% - 7.25rem);
+}
+.content ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: .5rem;
+    list-style: upper-alpha inside;
+    gap: 0.75rem;
+}
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+    color: darkgray;
+    width: 42px;
+}
+.options button {
+    background-color: unset;
+    border: unset;
+    font-size: .875rem;
+    color: darkgray;
+}
+.options button:hover {
+    text-decoration: underline;
+    color: black;
+}

@@ -24,7 +24,7 @@ span {
     font-weight: bold;
     color: var(--green);
     position: relative;
-    top: -3px;
+    top: -5px;
 }
 span.nav-icon {
     font-size: 1.25rem;
@@ -32,12 +32,7 @@ span.nav-icon {
     background-color: var(--green);
     width: 1rem;
     height: 1rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 1rem;
-    border-radius: 50%;
     top: 0;
 }
 nav {

@@ -38,13 +38,7 @@ span.nav-icon {
     background-color: gray;
     width: .75rem;
     height: .75rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: .75rem;
-    border-radius: 50%;
-    top: 0;
 }
 .btn-container {
     display: flex;
