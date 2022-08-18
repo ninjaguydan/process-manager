@@ -4,6 +4,7 @@ import {HttpService} from "../../services/http.service";
 import {first} from "rxjs";
 import {DataService} from "../../services/data.service";
 import { Router } from "@angular/router";
+import {ToastService} from "../../services/toast.service";
 
 @Component({
 	selector: 'app-process',
@@ -15,7 +16,7 @@ export class ProcessComponent implements OnInit {
 	@Input() PROCESS!: IProcess
 	@Output() ON_CHANGE = new EventEmitter
 
-	constructor(private httpService: HttpService, private dataService:DataService, private router:Router) {
+	constructor(private httpService: HttpService, private dataService:DataService, private router:Router, public toastService:ToastService) {
 	}
 
 	ngOnInit(): void {
@@ -27,7 +28,10 @@ export class ProcessComponent implements OnInit {
 
 	deleteProcess() {
 		this.httpService.DELETE_PROCESS(this.PROCESS.id).pipe(first()).subscribe({
-			next: () => this.ON_CHANGE.emit(),
+			next: () => {
+				this.toastService.show("Process Deleted!","", {delay: 5000, className: "dt-danger"})
+				this.ON_CHANGE.emit()
+			},
 			error: err => console.error(err)
 		})
 	}

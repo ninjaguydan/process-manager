@@ -1,1 +1,9 @@
-<p>process-finished works!</p>
+<div class="pg-container">
+	<h2>Completed Processes</h2>
+	<p *ngIf="processList.length === 0">Nothing finished yet!</p>
+	<app-process *ngFor="let process of processList"
+	             [PROCESS]="process"
+	             (ON_CHANGE)="setProcessList()"
+	>
+	</app-process>
+</div>

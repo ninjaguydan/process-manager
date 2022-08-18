@@ -12,6 +12,7 @@ import {StageFormComponent} from './components/stage-form/stage-form.component';
 import {StageCardComponent} from './components/stage-card/stage-card.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ProcessComponent} from './components/process/process.component';
+import { ToastsComponent } from './components/toasts/toasts.component';
 
 const routes: Routes = [
 	{path: "", component: ProcessListComponent},
@@ -29,6 +30,8 @@ const routes: Routes = [
 		StageFormComponent,
 		StageCardComponent,
 		ProcessComponent,
+  ProcessFinishedComponent,
+  ToastsComponent,
 	],
 	imports: [
 		RouterModule.forRoot(routes),

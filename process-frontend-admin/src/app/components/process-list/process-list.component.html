@@ -1,5 +1,6 @@
 <div class="pg-container">
 	<h2>All Processes</h2>
+	<p *ngIf="processList.length===0">No Processes yet! Why not <a routerLink="new">create one</a>?</p>
 	<app-process *ngFor="let process of processList"
 			[PROCESS]="process"
 	        (ON_CHANGE)="setProcessList()"

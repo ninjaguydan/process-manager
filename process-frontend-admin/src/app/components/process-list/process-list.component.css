@@ -3,3 +3,6 @@
     height: 100%;
     overflow: auto;
 }
+a {
+    color: var(--green);
+}

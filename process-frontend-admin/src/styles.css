@@ -59,3 +59,17 @@ span.nav-icon {
     background-color: var(--dark-green);
     border-color: var(--dark-green);
 }
+.dt-success .toast-header {
+    background-color: var(--green);
+    color: white;
+}
+.dt-success .toast-body {
+    background-color: white;
+}
+.dt-danger .toast-header {
+    background-color: orangered;
+    color: white;
+}
+.dt-danger .toast-body {
+    display: none;
+}

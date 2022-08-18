@@ -1,5 +1,5 @@
 <div class="pg-container">
-	<h2>Create New Process</h2>
+	<h2>{{isEditing ? 'Edit' : 'Create New'}} Process</h2>
 	<strong *ngIf="error">Title cannot be empty</strong>
 	<strong *ngIf="stageError">Must add at least 1 stage</strong>
 	<form>
