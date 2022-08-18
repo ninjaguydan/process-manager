@@ -1,0 +1,27 @@
+<div class="pg-container">
+	<h2>{{PROCESS.title}}</h2>
+	<article>
+		<div *ngFor="let stage of PROCESS.stages; let i=index" class="stage">
+			<label><span>{{i+1}}. </span>{{stage.prompt}}</label>
+			<br *ngIf="stage.responseType==='Text'; then showTextArea">
+			<ng-template #showTextArea>
+				<textarea class="form-control"></textarea>
+			</ng-template>
+			<br *ngIf="stage.responseType==='True/False'; then showRadio">
+			<ng-template #showRadio>
+				<div class="radio-container">
+					<label><input type="radio" name="prompt{{i}}" value="True"> True</label>
+					<label><input type="radio" name="prompt{{i}}" value="False"> False</label>
+				</div>
+			</ng-template>
+			<br *ngIf="stage.responseType==='Multiple'; then showChoices">
+			<ng-template #showChoices>
+				<div class="choice-grid">
+					<label *ngFor="let item of stage.options">
+						<input name="prompt{{i}}" type="radio" value="{{item.id}}"> {{item.content}}
+					</label>
+				</div>
+			</ng-template>
+		</div>
+	</article>
+</div>

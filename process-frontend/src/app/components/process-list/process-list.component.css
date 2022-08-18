@@ -1,0 +1,8 @@
+.pg-container {
+    padding: 3rem;
+    height: 100%;
+    overflow: auto;
+}
+a {
+    color: var(--green);
+}

@@ -30,8 +30,8 @@ const routes: Routes = [
 		StageFormComponent,
 		StageCardComponent,
 		ProcessComponent,
-  ProcessFinishedComponent,
-  ToastsComponent,
+		ProcessFinishedComponent,
+		ToastsComponent,
 	],
 	imports: [
 		RouterModule.forRoot(routes),
@@ -41,6 +41,9 @@ const routes: Routes = [
 		HttpClientModule
 	],
 	providers: [],
+	exports: [
+		ProcessListComponent
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
