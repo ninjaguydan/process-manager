@@ -9,6 +9,7 @@ import {HeaderComponent} from './components/header/header.component';
 import {ProcessListComponent} from './components/process-list/process-list.component';
 import {ProcessComponent} from './components/process/process.component';
 import { ProcessStartComponent } from './components/process-start/process-start.component';
+import { StageComponent } from './components/stage/stage.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ProcessStartComponent } from './components/process-start/process-start.
 		ProcessComponent,
 		ToastsComponent,
   ProcessStartComponent,
+  StageComponent,
 	],
 	imports: [
 		BrowserModule,

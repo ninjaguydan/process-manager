@@ -1,9 +1,18 @@
-<div class="pg-container">
-	<h2>Completed Processes</h2>
-	<p *ngIf="processList.length === 0">Nothing finished yet!</p>
-	<app-process *ngFor="let process of processList"
-	             [PROCESS]="process"
-	             (ON_CHANGE)="setProcessList()"
-	>
-	</app-process>
-</div>
+<button class="process-card" (click)="expandInfo()">
+	<header>
+		<div class="content">
+			<h3>{{PROCESS.title}} <small>{{PROCESS.stages.length}} Stage(s)</small></h3>
+			<p>{{PROCESS.directions}}</p>
+		</div>
+		<span class="chevron {{!truncated && 'rotate' }}">&#10148;</span>
+	</header>
+	<div *ngIf="!truncated" class="stage-container">
+		<div class="stage-card" *ngFor="let STAGE of PROCESS.stages; let i=index">
+			<span class="order">{{i + 1}}</span>
+			<div class="content">
+				<p>{{STAGE.prompt}}</p>
+				<p class="answer">{{STAGE.responseInput}}</p>
+			</div>
+		</div>
+	</div>
+</button>

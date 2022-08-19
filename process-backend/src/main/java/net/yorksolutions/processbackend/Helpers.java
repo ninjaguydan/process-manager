@@ -2,6 +2,10 @@ package net.yorksolutions.processbackend;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -31,5 +35,11 @@ public class Helpers {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
             }
         }
+    }
+    public static String textToMd5(String text) throws NoSuchAlgorithmException {
+        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+        messageDigest.update(text.getBytes());
+        byte[] digest = messageDigest.digest();
+        return DatatypeConverter.printHexBinary(digest).toLowerCase();
     }
 }

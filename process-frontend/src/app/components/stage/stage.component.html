@@ -1,0 +1,22 @@
+<div class="stage" *ngIf="INDEX===STEP">
+	<label><span>{{INDEX+1}}. </span>{{stage.prompt}}</label>
+	<br *ngIf="stage.responseType==='Text'; then showTextArea">
+	<ng-template #showTextArea>
+		<textarea class="form-control" rows="4" [ngModel]="stage.responseInput" (ngModelChange)="onChange($event)"></textarea>
+	</ng-template>
+	<br *ngIf="stage.responseType==='True/False'; then showRadio">
+	<ng-template #showRadio>
+		<div class="radio-container">
+			<label><input type="radio" name="prompt{{INDEX}}" value="True" [ngModel]="stage.responseInput" (ngModelChange)="onChange($event)"> True</label>
+			<label><input type="radio" name="prompt{{INDEX}}" value="False" [ngModel]="stage.responseInput" (ngModelChange)="onChange($event)"> False</label>
+		</div>
+	</ng-template>
+	<br *ngIf="stage.responseType==='Multiple'; then showChoices">
+	<ng-template #showChoices>
+		<div class="choice-grid">
+			<label *ngFor="let item of stage.options">
+				<input name="prompt{{INDEX}}" type="radio" value="{{item.content}}" [ngModel]="stage.responseInput" (ngModelChange)="onChange($event)"> {{item.content}}
+			</label>
+		</div>
+	</ng-template>
+</div>

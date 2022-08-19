@@ -70,6 +70,3 @@ span.nav-icon {
     background-color: orangered;
     color: white;
 }
-.dt-danger .toast-body {
-    display: none;
-}

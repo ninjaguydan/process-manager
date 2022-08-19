@@ -1,5 +1,62 @@
-.pg-container {
-    padding: 3rem;
-    height: 100%;
-    overflow: auto;
+.process-card {
+    background-color: ghostwhite;
+    border: 1px solid lightgray;
+    border-radius: .25rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+}
+.process-card header {
+    position: relative;
+    display: flex;
+    column-gap: 1rem;
+}
+
+h3 {
+    margin-bottom: .5rem;
+}
+.chevron {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all .2s;
+}
+.chevron:hover {
+    color: var(--green);
+}
+.chevron.rotate {
+    transform:translateY(-50%) rotate(90deg);
+    color: var(--green);
+}
+.stage-container {
+    margin-top: 1rem;
+}
+small {
+    color: var(--bs-gray-500);
+    font-size: 1rem;
+}
+.stage-card {
+    width: 100%;
+    background-color: var(--dark-ghostwhite);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+    color: gray;
+    margin-bottom: 0.25rem;
+}
+.stage-card span {
+    font-weight: bold;
+}
+.content p:first-child{
+    margin-bottom: .5rem;
+}
+.content .answer{
+    font-weight: 500;
 }

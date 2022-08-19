@@ -3,6 +3,7 @@
 :root {
     --green: #00b21c;
     --dark-green: #06961c;
+    --disabled-green: #40ab16;
     --dark-ghostwhite: #ededf8;
 }
 * {
@@ -59,6 +60,10 @@ span.nav-icon {
 .btn-primary:active {
     background-color: var(--dark-green);
     border-color: var(--dark-green);
+}
+.btn-primary:disabled {
+    background-color: var(--disabled-green);
+    border-color: var(--disabled-green);
 }
 .dt-success .toast-header {
     background-color: var(--green);
