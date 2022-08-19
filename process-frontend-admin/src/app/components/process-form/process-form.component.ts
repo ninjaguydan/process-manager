@@ -13,22 +13,18 @@ import {ToastService} from "../../services/toast.service";
 })
 export class ProcessFormComponent implements OnInit {
 
+	process!:IProcess
 	isEditing:boolean = false
 	error:boolean = false
 	stageError:boolean = false
-	title: string = ""
-	directions: string = ""
-	stageList: IStage[] = []
 	stageToDeleteList:IStage[] = []
 	stageFormList: IStage[] = []
 
-
 	constructor(private httpService:HttpService, private dataService:DataService, public toastService:ToastService) {
+		this.process = this.setProcess()
 		if ( dataService.processToEdit ) {
 			this.isEditing = true
-			this.title = dataService.processToEdit.title
-			this.directions = dataService.processToEdit.directions
-			this.stageList = dataService.processToEdit.stages
+			this.process = this.setProcess()
 		}
 	}
 
@@ -38,21 +34,18 @@ export class ProcessFormComponent implements OnInit {
 
 	onProcessSave(){
 		if ( this.checkForError() ) { return }
-		let process = this.setProcess()
 		if (this.isEditing) {
-			this.httpService.EDIT_PROCESS(process).pipe(first()).subscribe({
+			this.httpService.EDIT_PROCESS(this.process, this.stageToDeleteList).pipe(first()).subscribe({
 				next: () => {
 					this.toastService.show("Process Updated!","See 'View All' to see Processes", {delay: 5000, className: "dt-success"})
-					this.handleDelete()
 					this.onCancel()
 				},
-				error: () => console.error("EDIT WENT WRONG")
+				error: () => console.error("SHIT WENT WRONG")
 			})
 		} else {
-			this.httpService.CREATE_PROCESS(process).pipe(first()).subscribe({
+			this.httpService.CREATE_PROCESS(this.process).pipe(first()).subscribe({
 				next: () => {
 					this.toastService.show("Process Created!","See 'View All' to see Processes", {delay: 5000, className: "dt-success"})
-					this.handleDelete()
 					this.onCancel()
 				},
 				error: () => console.error("SHIT WENT WRONG")
@@ -61,11 +54,11 @@ export class ProcessFormComponent implements OnInit {
 	}
 
 	addStage(stage: IStage) {
-		let existingStage = this.stageList.find((s) => s.id === stage.id)
+		let existingStage = this.process.stages.find((s) => s.id === stage.id)
 		if ( !existingStage ) {
-			this.stageList.push(stage)
+			this.process.stages.push(stage)
 		} else {
-			this.stageList.map((s) => {
+			this.process.stages.map((s) => {
 				if ( s.id === stage.id ) {
 					return stage
 				} else {
@@ -74,10 +67,10 @@ export class ProcessFormComponent implements OnInit {
 			})
 		}
 	}
-	removeStage(id: number) {
-		let stageToDelete = this.stageList.find((stage) => stage.id === id)!
+	removeStage(stageToDelete:IStage) {
 		this.stageToDeleteList.push(stageToDelete)
-		this.stageList = this.stageList.filter((stage) => stage.id !== id)
+		console.log(this.stageToDeleteList)
+		this.process.stages = this.process.stages.filter((stage) => stage !== stageToDelete)
 	}
 	editStage(stage: IStage) {
 		this.stageFormList = [stage]
@@ -94,12 +87,11 @@ export class ProcessFormComponent implements OnInit {
 	}
 
 	onCancel(): void {
-		this.title = ""
-		this.directions = ""
-		this.stageFormList = []
-		this.stageList = []
-		this.dataService.SET_PROCESS_EDIT()
 		this.isEditing = false
+		this.dataService.SET_PROCESS_EDIT()
+		this.stageFormList = []
+		this.stageToDeleteList = []
+		this.process = this.setProcess()
 	}
 
 	setEmptyStage(): IStage {
@@ -117,28 +109,26 @@ export class ProcessFormComponent implements OnInit {
 		if ( this.isEditing ) {
 			return {
 				id: this.dataService.processToEdit!.id,
-				title: this.title,
-				directions: this.directions,
+				title: this.dataService.processToEdit!.title,
+				directions: this.dataService.processToEdit!.directions,
 				isCompleted: false,
-				stages: [
-					...this.stageList,
-				]
+				stages: this.dataService.processToEdit!.stages
 			}
 		} else {
 			return {
 				id: 0,
-				title: this.title,
-				directions: this.directions,
+				title: "",
+				directions: "",
 				isCompleted: false,
-				stages: this.stageList
+				stages: []
 			}
 		}
 	}
 	checkForError():boolean{
-		if (this.title === "") {
+		if (this.process.title === "") {
 			this.error = true
 			return true
-		} else if ( this.stageList.length === 0) {
+		} else if ( this.process.stages.length === 0) {
 			this.error = false
 			this.stageError = true
 			return true
@@ -146,11 +136,19 @@ export class ProcessFormComponent implements OnInit {
 		this.stageError = false
 		return false
 	}
-	handleDelete(){
-		for (let stage of this.stageToDeleteList) {
-			this.httpService.DELETE_STAGE(stage.id, this.dataService.processToEdit?.id!).pipe(first()).subscribe()
+	sortStages(direction:{direction:string, index:number}){
+		console.log(direction)
+		for (let i = 0; i < this.process.stages.length; i++) {
+			if ( i === direction.index ) {
+				let temp = this.process.stages[i]
+				if ( direction.direction === "up" && direction.index !== 0 ) {
+					this.process.stages[i] = this.process.stages[i-1]
+					this.process.stages[i-1] = temp
+				} else if (direction.direction === "down" && direction.index !== this.process.stages.length-1) {
+					this.process.stages[i] = this.process.stages[i+1]
+					this.process.stages[i+1] = temp
+				}
+			}
 		}
-		this.stageToDeleteList = []
 	}
-
 }

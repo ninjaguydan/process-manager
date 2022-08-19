@@ -1,10 +1,10 @@
 .stage-card {
     width: 100%;
     background-color: var(--dark-ghostwhite);
-    padding: 1rem;
+    padding: .75rem;
     border-radius: 0.25rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
     column-gap: 1.5rem;
     color: gray;
@@ -17,7 +17,7 @@
     flex-grow: 1;
 }
 .content {
-    width: calc(100% - 8rem);
+    width: calc(100% - 12rem);
 }
 .content ul {
     display: grid;
@@ -42,5 +42,28 @@
 }
 .options button:hover {
     text-decoration: underline;
+    color: black;
+}
+.reorder {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}
+.reorder button {
+    color: darkgray;
+    transition: all .2s;
+}
+.up {
+    transform: rotate(-90deg);
+}
+.up:hover {
+    transform: scale(1.5) rotate(-90deg);
+    color: black;
+}
+.down {
+    transform: rotate(90deg);
+}
+.down:hover {
+    transform: scale(1.5) rotate(90deg);
     color: black;
 }

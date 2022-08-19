@@ -5,19 +5,20 @@
 	<form>
 		<div class="form-group">
 			<label for="title">Title</label>
-			<input name="title" id="title" class="form-control {{error && 'error'}}" [(ngModel)]="title">
+			<input name="title" id="title" class="form-control {{error && 'error'}}" [(ngModel)]="process.title">
 		</div>
 		<div class="form-group">
 			<label for="directions">Directions</label>
-			<textarea id="directions" name="directions" class="form-control" [(ngModel)]="directions"></textarea>
+			<textarea id="directions" name="directions" class="form-control" [(ngModel)]="process.directions"></textarea>
 		</div>
 
 		<app-stage-card
-				*ngFor="let stage of stageList; let i=index"
+				*ngFor="let stage of process.stages; let i=index"
 				[STAGE]="stage"
 				[INDEX]="i"
 				(ON_STAGE_DELETE)="removeStage($event)"
 				(ON_STAGE_EDIT)="editStage($event)"
+				(ON_ORDER_CHANGE)="sortStages($event)"
 		>
 		</app-stage-card>
 

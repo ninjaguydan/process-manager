@@ -35,12 +35,8 @@ export class ProcessComponent implements OnInit {
 			error: err => console.error(err)
 		})
 	}
-
 	editProcess() {
 		this.dataService.SET_PROCESS_EDIT(this.PROCESS)
 		this.router.navigate(["new"]).then()
-
 	}
-
-
 }

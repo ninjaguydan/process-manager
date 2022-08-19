@@ -1,4 +1,8 @@
 <div class="stage-card">
+	<div *ngIf="EDIT_VIEW" class="reorder">
+		<button class="up" (click)="onOrder('up')" value="up">&#10132;</button>
+		<button class="down" (click)="onOrder('down')">&#10132;</button>
+	</div>
 	<span class="order">{{INDEX+1}}</span>
 	<div class="content">
 		<p>{{STAGE.prompt}}</p>

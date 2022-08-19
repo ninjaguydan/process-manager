@@ -11,8 +11,7 @@
 		<span class="chevron {{!truncated && 'rotate' }}">&#10148;</span>
 	</header>
 	<div *ngIf="!truncated" class="stage-container">
-		<app-stage-card
-				*ngFor="let stage of PROCESS.stages; let i=index"
+		<app-stage-card *ngFor="let stage of PROCESS.stages; let i=index"
 				[STAGE]="stage"
 				[INDEX]="i"
 				[EDIT_VIEW]=false

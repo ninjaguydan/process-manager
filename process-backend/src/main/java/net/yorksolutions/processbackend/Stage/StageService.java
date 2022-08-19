@@ -26,10 +26,6 @@ public class StageService {
         this.processRepository = processRepository;
     }
 
-//    public Iterable<Stage> GET_ALL_STAGES() {
-//        return repository.findAll();
-//    }
-
     public Stage CREATE_STAGE(StageRequest stageRequest) {
         nullCheck(stageRequest.prompt);
         var stage = new Stage(stageRequest.prompt, stageRequest.responseType);
@@ -44,7 +40,7 @@ public class StageService {
     }
 
     public void EDIT_STAGE(StageRequest requestBody, Process process) {
-        if ( repository.existsById(requestBody.id) ) {
+        if (repository.existsById(requestBody.id)) {
             Stage stage = repository.findById(requestBody.id).get();
             stage.prompt = requestBody.prompt;
             stage.responseType = requestBody.responseType;
@@ -62,14 +58,13 @@ public class StageService {
         }
     }
 
-    public void DELETE_STAGE(Long id, Long processId) {
-        if (!repository.existsById(id)) {
+    public void DELETE_STAGE(StageRequest stage, Process process) {
+        if (!repository.existsById(stage.id)) {
+            System.out.println("does not exist");
             return;
         }
-        Stage stage = emptyCheck(repository.findById(id));
-        Process process = emptyCheck(processRepository.findById(processId));
-        process.stages.remove(stage);
+        Stage stageToDelete = emptyCheck(repository.findById(stage.id));
+        process.stages.remove(stageToDelete);
         processRepository.save(process);
-        repository.delete(stage);
     }
 }

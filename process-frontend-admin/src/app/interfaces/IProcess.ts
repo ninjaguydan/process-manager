@@ -6,4 +6,5 @@ export interface IProcess {
 	directions:string
 	isCompleted:boolean
 	stages:IStage[]
+	cleanUp?:IStage[]
 }

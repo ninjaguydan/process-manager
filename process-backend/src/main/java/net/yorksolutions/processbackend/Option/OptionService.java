@@ -27,7 +27,4 @@ public class OptionService {
         option.content = newContent;
         repository.save(option);
     }
-    public void DELETE_OPTION(Long optionId){
-        repository.deleteById(optionId);
-    }
 }

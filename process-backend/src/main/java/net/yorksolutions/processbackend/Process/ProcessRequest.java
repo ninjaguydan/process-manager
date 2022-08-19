@@ -8,4 +8,5 @@ public class ProcessRequest {
     public String directions;
     public Boolean isCompleted;
     public Iterable<StageRequest> stages;
+    public Iterable<StageRequest> cleanUp;
 }
