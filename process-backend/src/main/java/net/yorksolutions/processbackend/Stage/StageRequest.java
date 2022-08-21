@@ -5,7 +5,7 @@ import net.yorksolutions.processbackend.Option.OptionRequest;
 
 public class StageRequest {
     public Long id;
-    public Long processId;
+    public Long place;
     public String prompt;
     public String responseType;
     public String responseInput;

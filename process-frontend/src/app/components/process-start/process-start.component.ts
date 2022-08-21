@@ -19,10 +19,10 @@ export class ProcessStartComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.stageSort()
 	}
 
 	onNext() {
-		console.log(this.PROCESS.stages[this.step].responseInput)
 		if (this.PROCESS.stages[this.step].responseInput !== "" && this.step < this.PROCESS.stages.length-1) {
 			this.step++
 		} else if (this.step === this.PROCESS.stages.length-1) {
@@ -36,6 +36,9 @@ export class ProcessStartComponent implements OnInit {
 	}
 	omCancel(){
 		this.dataService.START_PROCESS()
+	}
+	stageSort(){
+		this.PROCESS.stages.sort((a, b) => a.place - b.place)
 	}
 
 }

@@ -28,7 +28,7 @@ public class StageService {
 
     public Stage CREATE_STAGE(StageRequest stageRequest) {
         nullCheck(stageRequest.prompt);
-        var stage = new Stage(stageRequest.prompt, stageRequest.responseType);
+        var stage = new Stage(stageRequest.prompt, stageRequest.responseType, stageRequest.place);
         repository.save(stage);
         if (stageRequest.responseType.equals("Multiple")) {
             for (OptionRequest option : stageRequest.options) {
@@ -43,6 +43,7 @@ public class StageService {
         if (repository.existsById(requestBody.id)) {
             Stage stage = repository.findById(requestBody.id).get();
             stage.prompt = requestBody.prompt;
+            stage.place = requestBody.place;
             stage.responseType = requestBody.responseType;
             stage.responseInput = requestBody.responseInput;
             if (requestBody.responseType.equals("Multiple")) {

@@ -15,6 +15,8 @@ public class Stage {
     @JsonProperty
     public Long id;
     @JsonProperty
+    public Long place;
+    @JsonProperty
     public String prompt;
     @JsonProperty
     public String responseType;
@@ -25,8 +27,9 @@ public class Stage {
     public List<Option> options = new ArrayList<>();
 
     public Stage(){}
-    public Stage(String prompt, String responseType){
+    public Stage(String prompt, String responseType, Long place){
         this.prompt = prompt;
+        this.place = place;
         this.responseType = responseType;
         this.responseInput = "";
     }

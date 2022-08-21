@@ -18,6 +18,11 @@ export class ProcessFinishedComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.stageSort()
+	}
+
+	stageSort(){
+		this.PROCESS.stages.sort((a, b) => a.place - b.place)
 	}
 
 }

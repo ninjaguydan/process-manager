@@ -20,6 +20,7 @@ export class ProcessComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.stageSort()
 	}
 
 	expandInfo() {
@@ -38,5 +39,8 @@ export class ProcessComponent implements OnInit {
 	editProcess() {
 		this.dataService.SET_PROCESS_EDIT(this.PROCESS)
 		this.router.navigate(["new"]).then()
+	}
+	stageSort(){
+		this.PROCESS.stages.sort((a, b) => a.place - b.place)
 	}
 }

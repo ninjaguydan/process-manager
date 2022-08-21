@@ -15,6 +15,7 @@ export class StageFormComponent implements OnInit {
 	error:boolean = false
 	optionError:boolean = false
 
+
 	constructor() {
 
 	}
