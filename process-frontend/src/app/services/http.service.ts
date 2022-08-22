@@ -17,6 +17,6 @@ export class HttpService {
 		return this.httpClient.get<IProcess[]>('http://localhost:8080/processes')
 	}
 	EDIT_PROCESS(process:IProcess) {
-		return this.httpClient.put('http://localhost:8080/processes', {...process, isCompleted:true})
+		return this.httpClient.put('http://localhost:8080/processes', {...process, isCompleted:true, cleanUp:[]})
 	}
 }
